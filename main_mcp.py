@@ -9,186 +9,166 @@ mcp = FastMCP("local-financial-mcp")
 data_dir = Path("./test_data_dir")
 print("Resolved data_dir:", data_dir.resolve())
 
-# Helper: Load JSON by phone number + filename
 def load_json(phone_number: str, filename: str):
+    """Return parsed JSON for *phone_number/filename* or {} if missing."""
     file_path = data_dir / phone_number / filename
     if file_path.exists():
-        with open(file_path, "r") as file:
-            return json.load(file)
+        with open(file_path, "r", encoding="utf-8") as fp:
+            return json.load(fp)
     return {}
 
-# Dummy authentication
+# Cache allowed phone numbers (folder names)
+allowed_numbers = {p.name for p in data_dir.iterdir() if p.is_dir()}
+
+# -----------------------------------------------------------------------------
+# Tools
+# -----------------------------------------------------------------------------
+
 @mcp.tool()
 def authenticate_user(phone_number: str) -> str:
+    """Dummy login — succeeds if *phone_number* directory exists."""
     phone_number = phone_number.strip()
-    allowed = {p.name.strip() for p in data_dir.iterdir() if p.is_dir()}
-    print(f"Input: '{phone_number}'")
-    print(f"Allowed: {allowed}")
-    if phone_number in allowed:
-        return f"Authenticated {phone_number} successfully."
-    return f"Authentication failed. Allowed numbers: {allowed}"
+    if phone_number in allowed_numbers:
+        return f"✅ Authenticated {phone_number}"
+    return "❌ Authentication failed — unknown phone number."
+
+# -----------------------------------------------------------------------------
+# Net‑worth
+# -----------------------------------------------------------------------------
 
 @mcp.tool()
 def fetch_net_worth(phone_number: str) -> str:
-    """Fetch user's net worth details from local data."""
     data = load_json(phone_number, "fetch_net_worth.json")
     if not data:
-        return "No net worth data found."
+        return "No net‑worth data found."
 
-    net_worth = data.get("netWorthResponse", {})
-    total = net_worth.get("totalNetWorthValue", {}).get("units", "N/A")
-    assets = net_worth.get("assetValues", [])
-    liabilities = net_worth.get("liabilityValues", [])  # May be missing
+    nw = data.get("netWorthResponse", {})
+    total = nw.get("totalNetWorthValue", {}).get("units", "N/A")
+    assets = nw.get("assetValues", [])
+    liabilities = nw.get("liabilityValues", [])
 
-    output_lines = [f"💰 Total Net Worth: ₹{total}"]
+    out = [f"💰 Total Net Worth: ₹{total}"]
 
     if assets:
-        output_lines.append("\n📊 Assets:")
-        for asset in assets:
-            attr = asset.get("netWorthAttribute", "Unknown")
-            value = asset.get("value", {}).get("units", "0")
-            output_lines.append(f"- {attr}: ₹{value}")
-
+        out.append("\n📊 Assets:")
+        for a in assets:
+            out.append(f"- {a.get('netWorthAttribute')}: ₹{a.get('value', {}).get('units')}")
     if liabilities:
-        output_lines.append("\n💸 Liabilities:")
-        for liab in liabilities:
-            attr = liab.get("netWorthAttribute", "Unknown")
-            value = liab.get("value", {}).get("units", "0")
-            output_lines.append(f"- {attr}: ₹{value}")
+        out.append("\n💸 Liabilities:")
+        for l in liabilities:
+            out.append(f"- {l.get('netWorthAttribute')}: ₹{l.get('value', {}).get('units')}")
+    return "\n".join(out)
 
-    return "\n".join(output_lines)
+# -----------------------------------------------------------------------------
+# Credit Report (full list, no slicing)
+# -----------------------------------------------------------------------------
 
 @mcp.tool()
 def fetch_credit_report(phone_number: str) -> str:
-    """Fetch user's credit report summary from local data."""
     data = load_json(phone_number, "fetch_credit_report.json")
     if not data:
-        return "No credit report data found."
+        return "No credit‑report data found."
 
-    reports = data.get("creditReports", [])
-    if not reports:
-        return "No credit reports available."
+    rep = (data.get("creditReports") or [{}])[0]
+    score = rep.get("creditReportData", {}).get("score", {}).get("bureauScore", "N/A")
+    accounts = rep.get("creditReportData", {}).get("creditAccount", {}).get("creditAccountDetails", [])
 
-    report = reports[0]  # Assume single report
-    score = report.get("creditReportData", {}).get("score", {}).get("bureauScore", "N/A")
-    accounts = report.get("creditReportData", {}).get("creditAccount", {}).get("creditAccountDetails", [])
-
-    output_lines = [f"🔢 Credit Score: {score}", "\n📄 Credit Accounts Summary:"]
-
-    for acc in accounts[:5]:
-        bank = acc.get("subscriberName", "Unknown")
-        open_date = acc.get("openDate", "N/A")
-        balance = acc.get("currentBalance", "0")
-        due = acc.get("amountPastDue", "0")
-        rating = acc.get("paymentRating", "N/A")
-        status = acc.get("accountStatus", "N/A")
-
-        output_lines.append(
-            f"🏦 {bank} | Opened: {open_date} | Balance: ₹{balance} | Due: ₹{due} | Status: {status} | Rating: {rating}"
+    lines = [f"🔢 Credit Score: {score}", "\n📄 Credit Accounts:"]
+    for acc in accounts:
+        lines.append(
+            f"🏦 {acc.get('subscriberName')} | Opened: {acc.get('openDate')} | "
+            f"Balance: ₹{acc.get('currentBalance')} | Due: ₹{acc.get('amountPastDue')} | "
+            f"Status: {acc.get('accountStatus')} | Rating: {acc.get('paymentRating')}"
         )
+    return "\n".join(lines)
 
-    return "\n".join(output_lines)
+# -----------------------------------------------------------------------------
+# Bank transactions (show all)
+# -----------------------------------------------------------------------------
+
+TXN_TYPES = {
+    1: "CREDIT", 2: "DEBIT", 3: "OPENING", 4: "INTEREST",
+    5: "TDS", 6: "INSTALLMENT", 7: "CLOSING", 8: "OTHERS"
+}
 
 @mcp.tool()
 def fetch_bank_transactions(phone_number: str) -> str:
-    """Fetch user's bank transaction details."""
     data = load_json(phone_number, "fetch_bank_transactions.json")
     if not data:
-        return "No bank transaction data found."
+        return "No bank‑transaction data found."
 
-    txns_data = data.get("bankTransactions", [])
-    if not txns_data:
-        return "No banks found in transaction data."
+    banks = data.get("bankTransactions", [])
+    if not banks:
+        return "No banks in transaction data."
 
-    output_lines = []
-
-    for bank_entry in txns_data:
-        bank_name = bank_entry.get("bank", "Unknown Bank")
-        txns = bank_entry.get("txns", [])
-
-        output_lines.append(f"\n📘 {bank_name} – Last Transactions:")
-
-        for txn in txns[:5]:
-            amount, narration, date, txn_type, mode, balance = txn
-
-            txn_type_label = {
-                1: "CREDIT", 2: "DEBIT", 3: "OPENING", 4: "INTEREST",
-                5: "TDS", 6: "INSTALLMENT", 7: "CLOSING", 8: "OTHERS"
-            }.get(txn_type, "UNKNOWN")
-
-            output_lines.append(
-                f"🗓️ {date} | ₹{amount} | {txn_type_label} via {mode} | {narration} | Balance: ₹{balance}"
+    out = []
+    for bank in banks:
+        name = bank.get("bank", "Unknown Bank")
+        out.append(f"\n📘 {name} — Transactions:")
+        for amt, narr, date, t_type, mode, bal in bank.get("txns", []):
+            out.append(
+                f"🗓️ {date} | ₹{amt} | {TXN_TYPES.get(t_type, 'UNKNOWN')} via {mode} | {narr} | Bal: ₹{bal}"
             )
+    return "\n".join(out)
 
-    return "\n".join(output_lines)
+# -----------------------------------------------------------------------------
+# EPF details (unchanged)
+# -----------------------------------------------------------------------------
 
 @mcp.tool()
 def fetch_epf_details(phone_number: str) -> str:
-    """Fetch user's EPF details and balances."""
     data = load_json(phone_number, "fetch_epf_details.json")
     if not data:
         return "No EPF data found."
 
-    uan_accounts = data.get("uanAccounts", [])
-    if not uan_accounts:
-        return "No UAN account details available."
+    uans = data.get("uanAccounts", [])
+    if not uans:
+        return "No UAN accounts available."
 
-    output_lines = []
-
-    for account in uan_accounts:
-        raw = account.get("rawDetails", {})
+    lines = []
+    for acc in uans:
+        raw = acc.get("rawDetails", {})
         ests = raw.get("est_details", [])
-        overall = raw.get("overall_pf_balance", {})
-
-        output_lines.append("🏢 Employment History:")
-        for est in ests:
-            output_lines.append(
-                f"- {est.get('est_name', 'Unknown')}\n"
-                f"  • Member ID: {est.get('member_id', 'N/A')}\n"
-                f"  • DOJ: {est.get('doj_epf')} → DOE: {est.get('doe_epf')}\n"
-                f"  • PF Balance: ₹{est['pf_balance'].get('net_balance', '0')}"
+        ov   = raw.get("overall_pf_balance", {})
+        lines.append("🏢 Employment History:")
+        for e in ests:
+            lines.append(
+                f"- {e.get('est_name')} | DOJ {e.get('doj_epf')} → DOE {e.get('doe_epf')} | "
+                f"PF Balance: ₹{e['pf_balance'].get('net_balance', '0')}"
             )
+        lines.append("\n💰 Overall EPF Summary:")
+        lines.append(f"- Pension Balance: ₹{ov.get('pension_balance', '0')}")
+        lines.append(f"- Current PF Balance: ₹{ov.get('current_pf_balance', '0')}")
+        lines.append(f"- Employee Share Balance: ₹{ov.get('employee_share_total', {}).get('balance', '0')}")
+    return "\n".join(lines)
 
-        pension = overall.get("pension_balance", "0")
-        curr_pf = overall.get("current_pf_balance", "0")
-        emp_total = overall.get("employee_share_total", {}).get("balance", "0")
-
-        output_lines.append("\n💰 Overall EPF Summary:")
-        output_lines.append(f"- Pension Balance: ₹{pension}")
-        output_lines.append(f"- Current PF Balance: ₹{curr_pf}")
-        output_lines.append(f"- Total Employee Share Balance: ₹{emp_total}")
-
-    return "\n".join(output_lines)
+# -----------------------------------------------------------------------------
+# Mutual‑fund transactions (show all)
+# -----------------------------------------------------------------------------
 
 @mcp.tool()
 def fetch_mf_transactions(phone_number: str) -> str:
-    """Fetch user's mutual fund transaction history."""
     data = load_json(phone_number, "fetch_mf_transactions.json")
     if not data:
-        return "No mutual fund transaction data found."
+        return "No mutual‑fund data found."
 
-    mf_data = data.get("mfTransactions", [])
-    if not mf_data:
-        return "No mutual fund investments available."
+    mfs = data.get("mfTransactions", [])
+    if not mfs:
+        return "No mutual‑fund investments available."
 
-    output_lines = []
+    out = []
+    for mf in mfs:
+        scheme = mf.get("schemeName")
+        folio  = mf.get("folioId")
+        out.append(f"\n📈 {scheme} (Folio: {folio})")
+        for order, date, nav, units, amt in mf.get("txns", []):
+            lbl = "BUY" if order == 1 else "SELL"
+            out.append(f"🗓️ {date} | {lbl} | ₹{amt} @ ₹{nav}/unit | Units: {units:.4f}")
+    return "\n".join(out)
 
-    for mf in mf_data:
-        scheme = mf.get("schemeName", "Unknown Scheme")
-        folio = mf.get("folioId", "N/A")
-        txns = mf.get("txns", [])
-
-        output_lines.append(f"\n📈 {scheme} (Folio: {folio})")
-
-        for txn in txns[:5]:
-            order_type, date, nav, units, amount = txn
-            order_type_label = "BUY" if order_type == 1 else "SELL"
-            output_lines.append(
-                f"🗓️ {date} | {order_type_label} | ₹{amount} @ ₹{nav}/unit | Units: {units:.4f}"
-            )
-
-    return "\n".join(output_lines)
-
+# -----------------------------------------------------------------------------
 # Entry point
+# -----------------------------------------------------------------------------
+
 if __name__ == "__main__":
     mcp.run(transport="stdio")
