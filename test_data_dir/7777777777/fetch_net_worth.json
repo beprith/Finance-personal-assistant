@@ -1,0 +1,345 @@
+{
+  "netWorthResponse": {
+    "assetValues": [
+      {
+        "netWorthAttribute": "ASSET_TYPE_MUTUAL_FUND",
+        "value": {
+          "currencyCode": "INR",
+          "units": "103297"
+        }
+      },
+      {
+        "netWorthAttribute": "ASSET_TYPE_EPF",
+        "value": {
+          "currencyCode": "INR",
+          "units": "131150"
+        }
+      },
+      {
+        "netWorthAttribute": "ASSET_TYPE_SAVINGS_ACCOUNTS",
+        "value": {
+          "currencyCode": "INR",
+          "units": "5210"
+        }
+      },
+      {
+        "netWorthAttribute": "LIABILITY_TYPE_CREDIT_CARD",
+        "value": {
+          "currencyCode": "INR",
+          "units": "-71000"
+        }
+      },
+      {
+        "netWorthAttribute": "LIABILITY_TYPE_LOAN",
+        "value": {
+          "currencyCode": "INR",
+          "units": "-235000"
+        }
+      }
+    ],
+    "totalNetWorthValue": {
+      "currencyCode": "INR",
+      "units": "-66343"
+    }
+  },
+  "mfSchemeAnalytics": {
+    "schemeAnalytics": [
+      {
+        "schemeDetail": {
+          "amc": "IDBI_MUTUAL_FUND",
+          "nameData": {
+            "longName": "IDBI India Top 100 Equity Fund - Regular Plan Growth"
+          },
+          "planType": "REGULAR",
+          "investmentType": "OPEN",
+          "optionType": "GROWTH",
+          "divReinvOptionType": "NOT_APPLICABLE",
+          "nav": {
+            "currencyCode": "INR",
+            "units": "19",
+            "nanos": 500000000
+          },
+          "assetClass": "EQUITY",
+          "isinNumber": "INF397L01067",
+          "categoryName": "LARGE_CAP_FUND",
+          "fundhouseDefinedRiskLevel": "VERY_HIGH_RISK"
+        },
+        "enrichedAnalytics": {
+          "analytics": {
+            "schemeDetails": {
+              "currentValue": {
+                "currencyCode": "INR",
+                "units": "21548"
+              },
+              "investedValue": {
+                "currencyCode": "INR",
+                "units": "23500"
+              },
+              "XIRR": -4.815,
+              "absoluteReturns": {
+                "currencyCode": "INR",
+                "units": "-1952"
+              },
+              "unrealisedReturns": {
+                "currencyCode": "INR",
+                "units": "-1952"
+              },
+              "navValue": {
+                "currencyCode": "INR",
+                "units": "19",
+                "nanos": 500000000
+              },
+              "units": 1105.02
+            }
+          }
+        }
+      },
+      {
+        "schemeDetail": {
+          "amc": "LIC_MUTUAL_FUND",
+          "nameData": {
+            "longName": "LIC MF Infrastructure Fund - Regular Plan Growth"
+          },
+          "planType": "REGULAR",
+          "investmentType": "OPEN",
+          "optionType": "GROWTH",
+          "divReinvOptionType": "NOT_APPLICABLE",
+          "nav": {
+            "currencyCode": "INR",
+            "units": "17",
+            "nanos": 0
+          },
+          "assetClass": "EQUITY",
+          "isinNumber": "INF767K01019",
+          "categoryName": "SECTORAL_THEMATIC",
+          "fundhouseDefinedRiskLevel": "VERY_HIGH_RISK"
+        },
+        "enrichedAnalytics": {
+          "analytics": {
+            "schemeDetails": {
+              "currentValue": {
+                "currencyCode": "INR",
+                "units": "81749"
+              },
+              "investedValue": {
+                "currencyCode": "INR",
+                "units": "80000"
+              },
+              "XIRR": 2.102,
+              "absoluteReturns": {
+                "currencyCode": "INR",
+                "units": "1749"
+              },
+              "unrealisedReturns": {
+                "currencyCode": "INR",
+                "units": "1749"
+              },
+              "navValue": {
+                "currencyCode": "INR",
+                "units": "17",
+                "nanos": 0
+              },
+              "units": 4808.77
+            }
+          }
+        }
+      }
+    ]
+  },
+  "accountDetailsBulkResponse": {
+    "accountDetailsMap": {
+      "a1b2c3d4-e5f6-7890-1234-567890abcdef": {
+        "accountDetails": {
+          "fipId": "fip@cams",
+          "maskedAccountNumber": "XXXXXX1122",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_MUTUAL_FUNDS",
+          "accountType": {
+            "mutualFundAccountType": "MUTUAL_FUND_ACCOUNT_TYPE_FOLIO"
+          },
+          "fipMeta": {
+            "name": "CAMS",
+            "displayName": "CAMS"
+          }
+        },
+        "mutualFundSummary": {
+          "accountId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "currentValue": {
+            "currencyCode": "INR",
+            "units": "21548"
+          },
+          "holdingsInfo": [
+            {
+              "isin": "INF397L01067",
+              "folioNumber": "2211221122"
+            }
+          ]
+        }
+      },
+      "b2c3d4e5-f6a7-8901-2345-67890abcdef1": {
+        "accountDetails": {
+          "fipId": "fip@kfintech",
+          "maskedAccountNumber": "XXXXXX6655",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_MUTUAL_FUNDS",
+          "accountType": {
+            "mutualFundAccountType": "MUTUAL_FUND_ACCOUNT_TYPE_FOLIO"
+          },
+          "fipMeta": {
+            "name": "KFintech",
+            "displayName": "KFintech"
+          }
+        },
+        "mutualFundSummary": {
+          "accountId": "b2c3d4e5-f6a7-8901-2345-67890abcdef1",
+          "currentValue": {
+            "currencyCode": "INR",
+            "units": "81749"
+          },
+          "holdingsInfo": [
+            {
+              "isin": "INF767K01019",
+              "folioNumber": "9988776655"
+            }
+          ]
+        }
+      },
+      "c3d4e5f6-a7b8-9012-3456-7890abcdef12": {
+        "accountDetails": {
+          "fipId": "fip@epfo",
+          "maskedAccountNumber": "MHBAN-XXXX-XXXX",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_EPF",
+          "accountType": {
+            "epfAccountType": "EPF_ACCOUNT_TYPE_DEFAULT_TYPE"
+          },
+          "fipMeta": {
+            "name": "EPFO",
+            "displayName": "EPFO"
+          }
+        },
+        "epfSummary": {
+          "accountId": "c3d4e5f6-a7b8-9012-3456-7890abcdef12",
+          "currentBalance": {
+            "currencyCode": "INR",
+            "units": "131150"
+          },
+          "balanceDate": "2024-05-21T12:00:00Z"
+        }
+      },
+      "d4e5f6a7-b8c9-0123-4567-890abcdef123": {
+        "accountDetails": {
+          "fipId": "ICICI-FIP",
+          "maskedAccountNumber": "XXXXXX4321",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_DEPOSIT",
+          "ifscCode": "ICIC0001234",
+          "accountType": {
+            "depositAccountType": "DEPOSIT_ACCOUNT_TYPE_SAVINGS"
+          },
+          "fipMeta": {
+            "name": "ICICI Bank",
+            "displayName": "ICICI",
+            "bank": "ICICI"
+          }
+        },
+        "depositSummary": {
+          "accountId": "d4e5f6a7-b8c9-0123-4567-890abcdef123",
+          "currentBalance": {
+            "currencyCode": "INR",
+            "units": "5210"
+          },
+          "balanceDate": "2024-05-21T18:00:00Z",
+          "depositAccountType": "DEPOSIT_ACCOUNT_TYPE_SAVINGS",
+          "depositAccountStatus": "DEPOSIT_ACCOUNT_STATUS_ACTIVE"
+        }
+      },
+      "e5f6a7b8-c9d0-1234-5678-90abcdef1234": {
+        "accountDetails": {
+          "fipId": "AXIS-FIP",
+          "maskedAccountNumber": "XXXX-XXXX-XXXX-5678",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_CREDIT_CARD",
+          "accountType": {
+            "creditCardAccountType": "CREDIT_CARD_ACCOUNT_TYPE_DEFAULT_TYPE"
+          },
+          "fipMeta": {
+            "name": "Axis Bank",
+            "displayName": "Axis Bank"
+          }
+        },
+        "creditCardSummary": {
+          "accountId": "e5f6a7b8-c9d0-1234-5678-90abcdef1234",
+          "currentBalance": {
+            "currencyCode": "INR",
+            "units": "71000"
+          },
+          "balanceDate": "2024-04-30T00:00:00Z",
+          "creditLimit": {
+            "currencyCode": "INR",
+            "units": "75000"
+          },
+          "amountPastDue": {
+            "currencyCode": "INR",
+            "units": "8500"
+          }
+        }
+      },
+      "f6a7b8c9-d0e1-2345-6789-0abcdef12345": {
+        "accountDetails": {
+          "fipId": "BAJAJ-FIP",
+          "maskedAccountNumber": "XXXXXX9876",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_LOAN",
+          "accountType": {
+            "loanAccountType": "LOAN_ACCOUNT_TYPE_PERSONAL"
+          },
+          "fipMeta": {
+            "name": "Bajaj Finserv",
+            "displayName": "Bajaj Finserv"
+          }
+        },
+        "loanSummary": {
+          "accountId": "f6a7b8c9-d0e1-2345-6789-0abcdef12345",
+          "currentOutstanding": {
+            "currencyCode": "INR",
+            "units": "125000"
+          },
+          "loanStatus": "LOAN_STATUS_ACTIVE_DEFAULT",
+          "originalLoanAmount": {
+            "currencyCode": "INR",
+            "units": "150000"
+          },
+          "amountPastDue": {
+            "currencyCode": "INR",
+            "units": "12000"
+          }
+        }
+      },
+      "a7b8c9d0-e1f2-3456-7890-bcdef1234567": {
+        "accountDetails": {
+          "fipId": "HDFC-FIP",
+          "maskedAccountNumber": "XXXXXX5432",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_LOAN",
+          "accountType": {
+            "loanAccountType": "LOAN_ACCOUNT_TYPE_AUTO"
+          },
+          "fipMeta": {
+            "name": "HDFC Bank",
+            "displayName": "HDFC Bank"
+          }
+        },
+        "loanSummary": {
+          "accountId": "a7b8c9d0-e1f2-3456-7890-bcdef1234567",
+          "currentOutstanding": {
+            "currencyCode": "INR",
+            "units": "110000"
+          },
+          "loanStatus": "LOAN_STATUS_ACTIVE",
+          "originalLoanAmount": {
+            "currencyCode": "INR",
+            "units": "500000"
+          },
+          "amountPastDue": {
+            "currencyCode": "INR",
+            "units": "0"
+          }
+        }
+      }
+    }
+  }
+}

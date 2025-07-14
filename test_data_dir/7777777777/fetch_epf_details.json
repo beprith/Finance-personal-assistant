@@ -1,0 +1,61 @@
+{
+  "uanAccounts": [
+    {
+      "phoneNumber": {},
+      "rawDetails": {
+        "est_details": [
+          {
+            "est_name": "DIGITAL SOLUTIONS HUB PVT LTD",
+            "member_id": "MHBANXXXXXXXXXXXXXXXXX",
+            "office": "(RO)BANDRA(MUMBAI-I)",
+            "doj_epf": "15-06-2020",
+            "doe_epf": "31-01-2022",
+            "doe_eps": "31-01-2022",
+            "pf_balance": {
+              "net_balance": "3150",
+              "employee_share": {
+                "credit": "30000",
+                "balance": "1500"
+              },
+              "employer_share": {
+                "credit": "30000",
+                "balance": "1500"
+              }
+            }
+          },
+          {
+            "est_name": "INNOVATECH GLOBAL SERVICES",
+            "member_id": "MHPN*****************",
+            "office": "(RO)PUNE",
+            "doj_epf": "15-02-2022",
+            "doe_epf": "NOT AVAILABLE",
+            "doe_eps": "NOT AVAILABLE",
+            "pf_balance": {
+              "net_balance": "128000",
+              "employee_share": {
+                "credit": "60000",
+                "balance": "60000"
+              },
+              "employer_share": {
+                "credit": "60000",
+                "balance": "60000"
+              }
+            }
+          }
+        ],
+        "overall_pf_balance": {
+          "pension_balance": "48500",
+          "current_pf_balance": "131150",
+          "employee_share_total": {
+            "credit": "90000",
+            "balance": "61500"
+          },
+          "employer_share_total": {
+            "credit": "90000",
+            "balance": "61500"
+          }
+        }
+      }
+    }
+  ]
+}

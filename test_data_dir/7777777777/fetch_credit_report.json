@@ -1,0 +1,178 @@
+{
+  "creditReports": [
+    {
+      "creditReportData": {
+        "userMessage": {
+          "userMessageText": "Normal Response"
+        },
+        "creditProfileHeader": {
+          "reportDate": "20240521",
+          "reportTime": "104515"
+        },
+        "currentApplication": {
+          "currentApplicationDetails": {
+            "enquiryReason": "5",
+            "amountFinanced": "0",
+            "durationOfAgreement": "0",
+            "currentApplicantDetails": {
+              "dateOfBirthApplicant": "19930515"
+            }
+          }
+        },
+        "creditAccount": {
+          "creditAccountSummary": {
+            "account": {
+              "creditAccountTotal": "3",
+              "creditAccountActive": "3",
+              "creditAccountDefault": "1",
+              "creditAccountClosed": "0",
+              "cadSuitFiledCurrentBalance": "125000"
+            },
+            "totalOutstandingBalance": {
+              "outstandingBalanceSecured": "110000",
+              "outstandingBalanceSecuredPercentage": "36",
+              "outstandingBalanceUnSecured": "196000",
+              "outstandingBalanceUnSecuredPercentage": "64",
+              "outstandingBalanceAll": "306000"
+            }
+          },
+          "creditAccountDetails": [
+            {
+              "subscriberName": "Axis Bank",
+              "portfolioType": "R",
+              "accountType": "10",
+              "openDate": "20220120",
+              "creditLimitAmount": "75000",
+              "highestCreditOrOriginalLoanAmount": "75000",
+              "accountStatus": "83",
+              "paymentRating": "4",
+              "paymentHistoryProfile": "000000000000000000000000000000000021",
+              "currentBalance": "71000",
+              "amountPastDue": "8500",
+              "dateReported": "20240430",
+              "occupationCode": "S",
+              "rateOfInterest": "24.5",
+              "repaymentTenure": "0",
+              "dateOfAddition": "20220120",
+              "currencyCode": "INR",
+              "accountHolderTypeCode": "1"
+            },
+            {
+              "subscriberName": "Bajaj Finserv",
+              "portfolioType": "I",
+              "accountType": "05",
+              "openDate": "20230310",
+              "highestCreditOrOriginalLoanAmount": "150000",
+              "accountStatus": "93",
+              "paymentRating": "7",
+              "paymentHistoryProfile": "000000000000000000000000000000000332",
+              "currentBalance": "125000",
+              "amountPastDue": "12000",
+              "dateReported": "20240428",
+              "occupationCode": "S",
+              "rateOfInterest": "18.0",
+              "repaymentTenure": "36",
+              "dateOfAddition": "20230310",
+              "currencyCode": "INR",
+              "accountHolderTypeCode": "1"
+            },
+            {
+              "subscriberName": "HDFC Bank",
+              "portfolioType": "I",
+              "accountType": "01",
+              "openDate": "20210815",
+              "highestCreditOrOriginalLoanAmount": "500000",
+              "accountStatus": "11",
+              "paymentRating": "0",
+              "paymentHistoryProfile": "000000000000000000000000000000001000",
+              "currentBalance": "110000",
+              "amountPastDue": "0",
+              "dateReported": "20240505",
+              "occupationCode": "S",
+              "rateOfInterest": "9.5",
+              "repaymentTenure": "60",
+              "dateOfAddition": "20210815",
+              "currencyCode": "INR",
+              "accountHolderTypeCode": "1"
+            }
+          ]
+        },
+        "matchResult": {
+          "exactMatch": "Y"
+        },
+        "totalCapsSummary": {
+          "totalCapsLast7Days": "1",
+          "totalCapsLast30Days": "2",
+          "totalCapsLast90Days": "4",
+          "totalCapsLast180Days": "4"
+        },
+        "nonCreditCaps": {
+          "nonCreditCapsSummary": {
+            "nonCreditCapsLast7Days": "1",
+            "nonCreditCapsLast30Days": "2",
+            "nonCreditCapsLast90Days": "4",
+            "nonCreditCapsLast180Days": "4"
+          },
+          "capsApplicationDetailsArray": [
+            {
+              "SubscriberName": "Paytm Postpaid",
+              "FinancePurpose": "35",
+              "capsApplicantDetails": {},
+              "capsOtherDetails": {},
+              "capsApplicantAddressDetails": {},
+              "capsApplicantAdditionalAddressDetails": {}
+            },
+            {
+              "SubscriberName": "IDFC First Bank",
+              "FinancePurpose": "10",
+              "capsApplicantDetails": {},
+              "capsOtherDetails": {},
+              "capsApplicantAddressDetails": {},
+              "capsApplicantAdditionalAddressDetails": {}
+            }
+          ]
+        },
+        "score": {
+          "bureauScore": "621",
+          "bureauScoreConfidenceLevel": "M"
+        },
+        "segment": {},
+        "caps": {
+          "capsSummary": {
+            "capsLast7Days": "1",
+            "capsLast30Days": "2",
+            "capsLast90Days": "4",
+            "capsLast180Days": "4"
+          },
+          "capsApplicationDetailsArray": [
+            {
+              "SubscriberName": "Paytm Postpaid",
+              "DateOfRequest": "20240518",
+              "EnquiryReason": "35",
+              "FinancePurpose": "35"
+            },
+            {
+              "SubscriberName": "IDFC First Bank",
+              "DateOfRequest": "20240425",
+              "EnquiryReason": "10",
+              "FinancePurpose": "10"
+            },
+             {
+              "SubscriberName": "OneCard",
+              "DateOfRequest": "20240310",
+              "EnquiryReason": "10",
+              "FinancePurpose": "10"
+            },
+             {
+              "SubscriberName": "Navi Finance",
+              "DateOfRequest": "20240302",
+              "EnquiryReason": "05",
+              "FinancePurpose": "05"
+            }
+          ]
+        }
+      },
+      "vendor": "EXPERIAN"
+    }
+  ]
+}

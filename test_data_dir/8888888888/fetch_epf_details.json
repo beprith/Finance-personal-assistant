@@ -1,0 +1,42 @@
+{
+  "uanAccounts": [
+    {
+      "phoneNumber": {},
+      "rawDetails": {
+        "est_details": [
+          {
+            "est_name": "FINANCIAL STRATEGIES INC.",
+            "member_id": "MHBANXXXXXXXXXXXXXXXXX",
+            "office": "(RO)BANDRA(MUMBAI-I)",
+            "doj_epf": "01-04-2020",
+            "doe_epf": "NOT AVAILABLE",
+            "doe_eps": "NOT AVAILABLE",
+            "pf_balance": {
+              "net_balance": "225000",
+              "employee_share": {
+                "credit": "100000",
+                "balance": "100000"
+              },
+              "employer_share": {
+                "credit": "100000",
+                "balance": "100000"
+              }
+            }
+          }
+        ],
+        "overall_pf_balance": {
+          "pension_balance": "65000",
+          "current_pf_balance": "225000",
+          "employee_share_total": {
+            "credit": "100000",
+            "balance": "100000"
+          },
+          "employer_share_total": {
+            "credit": "100000",
+            "balance": "100000"
+          }
+        }
+      }
+    }
+  ]
+}

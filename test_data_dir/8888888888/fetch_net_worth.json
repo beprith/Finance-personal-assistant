@@ -1,0 +1,364 @@
+{
+  "netWorthResponse": {
+    "assetValues": [
+      {
+        "netWorthAttribute": "ASSET_TYPE_MUTUAL_FUND",
+        "value": {
+          "currencyCode": "INR",
+          "units": "760627"
+        }
+      },
+      {
+        "netWorthAttribute": "ASSET_TYPE_EPF",
+        "value": {
+          "currencyCode": "INR",
+          "units": "225000"
+        }
+      },
+      {
+        "netWorthAttribute": "ASSET_TYPE_SAVINGS_ACCOUNTS",
+        "value": {
+          "currencyCode": "INR",
+          "units": "150000"
+        }
+      }
+    ],
+    "totalNetWorthValue": {
+      "currencyCode": "INR",
+      "units": "1135627"
+    }
+  },
+  "mfSchemeAnalytics": {
+    "schemeAnalytics": [
+      {
+        "schemeDetail": {
+          "amc": "KOTAK_MAHINDRA",
+          "nameData": {
+            "longName": "Kotak Flexicap Fund - Direct Growth"
+          },
+          "planType": "DIRECT",
+          "investmentType": "OPEN",
+          "optionType": "GROWTH",
+          "divReinvOptionType": "NOT_APPLICABLE",
+          "nav": {
+            "currencyCode": "INR",
+            "units": "65"
+          },
+          "assetClass": "EQUITY",
+          "isinNumber": "INF846K01MM9",
+          "categoryName": "FLEXI_CAP_FUND",
+          "fundhouseDefinedRiskLevel": "VERY_HIGH_RISK"
+        },
+        "enrichedAnalytics": {
+          "analytics": {
+            "schemeDetails": {
+              "currentValue": {
+                "currencyCode": "INR",
+                "units": "356569"
+              },
+              "investedValue": {
+                "currencyCode": "INR",
+                "units": "300000"
+              },
+              "XIRR": 11.504,
+              "absoluteReturns": {
+                "currencyCode": "INR",
+                "units": "56569"
+              },
+              "unrealisedReturns": {
+                "currencyCode": "INR",
+                "units": "56569"
+              },
+              "navValue": {
+                "currencyCode": "INR",
+                "units": "65"
+              },
+              "units": 5485.68
+            }
+          }
+        }
+      },
+      {
+        "schemeDetail": {
+          "amc": "ADITYA_BIRLA_SUN_LIFE",
+          "nameData": {
+            "longName": "Aditya Birla Sun Life Tax Relief 96 - Direct Growth"
+          },
+          "planType": "DIRECT",
+          "investmentType": "OPEN",
+          "optionType": "GROWTH",
+          "divReinvOptionType": "NOT_APPLICABLE",
+          "nav": {
+            "currencyCode": "INR",
+            "units": "45"
+          },
+          "assetClass": "EQUITY",
+          "isinNumber": "INF754K01JP4",
+          "categoryName": "ELSS",
+          "fundhouseDefinedRiskLevel": "VERY_HIGH_RISK"
+        },
+        "enrichedAnalytics": {
+          "analytics": {
+            "schemeDetails": {
+              "currentValue": {
+                "currencyCode": "INR",
+                "units": "198189"
+              },
+              "investedValue": {
+                "currencyCode": "INR",
+                "units": "175000"
+              },
+              "XIRR": 9.821,
+              "absoluteReturns": {
+                "currencyCode": "INR",
+                "units": "23189"
+              },
+              "unrealisedReturns": {
+                "currencyCode": "INR",
+                "units": "23189"
+              },
+              "navValue": {
+                "currencyCode": "INR",
+                "units": "45"
+              },
+              "units": 4404.2
+            }
+          }
+        }
+      },
+      {
+        "schemeDetail": {
+          "amc": "ICICI_PRUDENTIAL",
+          "nameData": {
+            "longName": "ICICI Prudential Bluechip Fund - Direct Growth"
+          },
+          "planType": "DIRECT",
+          "investmentType": "OPEN",
+          "optionType": "GROWTH",
+          "divReinvOptionType": "NOT_APPLICABLE",
+          "nav": {
+            "currencyCode": "INR",
+            "units": "101"
+          },
+          "assetClass": "EQUITY",
+          "isinNumber": "INF109K01YY9",
+          "categoryName": "LARGE_CAP_FUND",
+          "fundhouseDefinedRiskLevel": "VERY_HIGH_RISK"
+        },
+        "enrichedAnalytics": {
+          "analytics": {
+            "schemeDetails": {
+              "currentValue": {
+                "currencyCode": "INR",
+                "units": "102234"
+              },
+              "investedValue": {
+                "currencyCode": "INR",
+                "units": "90000"
+              },
+              "XIRR": 10.533,
+              "absoluteReturns": {
+                "currencyCode": "INR",
+                "units": "12234"
+              },
+              "unrealisedReturns": {
+                "currencyCode": "INR",
+                "units": "12234"
+              },
+              "navValue": {
+                "currencyCode": "INR",
+                "units": "101"
+              },
+              "units": 1012.22
+            }
+          }
+        }
+      },
+      {
+        "schemeDetail": {
+          "amc": "HDFC_MUTUAL_FUND",
+          "nameData": {
+            "longName": "HDFC Hybrid Equity Fund - Direct Growth"
+          },
+          "planType": "DIRECT",
+          "investmentType": "OPEN",
+          "optionType": "GROWTH",
+          "divReinvOptionType": "NOT_APPLICABLE",
+          "nav": {
+            "currencyCode": "INR",
+            "units": "73"
+          },
+          "assetClass": "HYBRID",
+          "isinNumber": "INF204K01HQ2",
+          "categoryName": "AGGRESSIVE_HYBRID_FUND",
+          "fundhouseDefinedRiskLevel": "VERY_HIGH_RISK"
+        },
+        "enrichedAnalytics": {
+          "analytics": {
+            "schemeDetails": {
+              "currentValue": {
+                "currencyCode": "INR",
+                "units": "103635"
+              },
+              "investedValue": {
+                "currencyCode": "INR",
+                "units": "96000"
+              },
+              "XIRR": 8.915,
+              "absoluteReturns": {
+                "currencyCode": "INR",
+                "units": "7635"
+              },
+              "unrealisedReturns": {
+                "currencyCode": "INR",
+                "units": "7635"
+              },
+              "navValue": {
+                "currencyCode": "INR",
+                "units": "73"
+              },
+              "units": 1419.66
+            }
+          }
+        }
+      }
+    ]
+  },
+  "accountDetailsBulkResponse": {
+    "accountDetailsMap": {
+      "11e5f6a7-b8c9-0123-4567-890abcdef123": {
+        "accountDetails": {
+          "fipId": "fip@cams",
+          "maskedAccountNumber": "XXXXXX13333",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_MUTUAL_FUNDS",
+          "accountType": {
+            "mutualFundAccountType": "MUTUAL_FUND_ACCOUNT_TYPE_FOLIO"
+          },
+          "fipMeta": {
+            "name": "CAMS",
+            "displayName": "CAMS"
+          }
+        },
+        "mutualFundSummary": {
+          "accountId": "11e5f6a7-b8c9-0123-4567-890abcdef123",
+          "currentValue": {
+            "currencyCode": "INR",
+            "units": "102234"
+          },
+          "holdingsInfo": [
+            {
+              "isin": "INF109K01YY9",
+              "folioNumber": "SIPSAM3456"
+            }
+          ]
+        }
+      },
+      "22e5f6a7-b8c9-0123-4567-890abcdef123": {
+        "accountDetails": {
+          "fipId": "fip@kfintech",
+          "maskedAccountNumber": "XXXXXX2345",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_MUTUAL_FUNDS",
+          "accountType": {
+            "mutualFundAccountType": "MUTUAL_FUND_ACCOUNT_TYPE_FOLIO"
+          },
+          "fipMeta": {
+            "name": "KFintech",
+            "displayName": "KFintech"
+          }
+        },
+        "mutualFundSummary": {
+          "accountId": "22e5f6a7-b8c9-0123-4567-890abcdef123",
+          "currentValue": {
+            "currencyCode": "INR",
+            "units": "198189"
+          },
+          "holdingsInfo": [
+            {
+              "isin": "INF754K01JP4",
+              "folioNumber": "SIPSAM2345"
+            }
+          ]
+        }
+      },
+      "33e5f6a7-b8c9-0123-4567-890abcdef123": {
+        "accountDetails": {
+          "fipId": "fip@cams",
+          "maskedAccountNumber": "XXXXXX4567",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_MUTUAL_FUNDS",
+          "accountType": {
+            "mutualFundAccountType": "MUTUAL_FUND_ACCOUNT_TYPE_FOLIO"
+          },
+          "fipMeta": {
+            "name": "CAMS",
+            "displayName": "CAMS"
+          }
+        },
+        "mutualFundSummary": {
+          "accountId": "33e5f6a7-b8c9-0123-4567-890abcdef123",
+          "currentValue": {
+            "currencyCode": "INR",
+            "units": "460204"
+          },
+          "holdingsInfo": [
+            {
+              "isin": "INF846K01MM9",
+              "folioNumber": "22112213333"
+            },
+            {
+              "isin": "INF204K01HQ2",
+              "folioNumber": "SIPSAM4567"
+            }
+          ]
+        }
+      },
+      "44d4e5f6-a7b8-9012-3456-7890abcdef12": {
+        "accountDetails": {
+          "fipId": "fip@epfo",
+          "maskedAccountNumber": "MHBAN-XXXX-XXXX",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_EPF",
+          "accountType": {
+            "epfAccountType": "EPF_ACCOUNT_TYPE_DEFAULT_TYPE"
+          },
+          "fipMeta": {
+            "name": "EPFO",
+            "displayName": "EPFO"
+          }
+        },
+        "epfSummary": {
+          "accountId": "44d4e5f6-a7b8-9012-3456-7890abcdef12",
+          "currentBalance": {
+            "currencyCode": "INR",
+            "units": "225000"
+          },
+          "balanceDate": "2024-05-21T12:00:00Z"
+        }
+      },
+      "55e5f6a7-b8c9-0123-4567-890abcdef123": {
+        "accountDetails": {
+          "fipId": "HDFC-FIP",
+          "maskedAccountNumber": "XXXXXX9988",
+          "accInstrumentType": "ACC_INSTRUMENT_TYPE_DEPOSIT",
+          "ifscCode": "HDFC0000060",
+          "accountType": {
+            "depositAccountType": "DEPOSIT_ACCOUNT_TYPE_SAVINGS"
+          },
+          "fipMeta": {
+            "name": "HDFC Bank",
+            "displayName": "HDFC",
+            "bank": "HDFC"
+          }
+        },
+        "depositSummary": {
+          "accountId": "55e5f6a7-b8c9-0123-4567-890abcdef123",
+          "currentBalance": {
+            "currencyCode": "INR",
+            "units": "150000"
+          },
+          "balanceDate": "2024-06-15T10:00:00Z",
+          "depositAccountType": "DEPOSIT_ACCOUNT_TYPE_SAVINGS",
+          "depositAccountStatus": "DEPOSIT_ACCOUNT_STATUS_ACTIVE"
+        }
+      }
+    }
+  }
+}

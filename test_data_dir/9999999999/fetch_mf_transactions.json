@@ -1,0 +1,50 @@
+{
+  "mfTransactions": [
+    {
+      "isin": "INF179KB1HS3",
+      "schemeName": "Nippon India Corporate Bond Fund - Direct Growth",
+      "folioId": "2002011001",
+      "txns": [
+        [1, "2022-04-01", 18.50, 432.4324, 8000],
+        [1, "2022-05-01", 18.56, 430.8937, 8000],
+        [1, "2022-06-01", 18.63, 429.3672, 8000],
+        [1, "2022-09-15", 18.92, 529.1001, 10000],
+        [1, "2023-03-01", 19.25, 415.5844, 8000],
+        [1, "2023-05-15", 19.65, 509.5541, 10000]
+      ]
+    },
+    {
+      "isin": "INF174V01BL6",
+      "schemeName": "Axis Treasury Advantage Fund - Direct Growth",
+      "folioId": "2002011001",
+      "txns": [
+        [1, "2022-07-01", 118.00, 84.7458, 10000],
+        [1, "2022-08-01", 118.45, 84.3922, 10000],
+        [1, "2022-09-01", 118.85, 84.1285, 10000],
+        [1, "2023-01-10", 120.55, 124.2775, 15000]
+      ]
+    },
+    {
+      "isin": "INF209K01YY1",
+      "schemeName": "UTI Money Market Fund - Direct Growth",
+      "folioId": "2002011001",
+      "txns": [
+        [1, "2023-01-01", 3150.00, 4.7619, 15000],
+        [1, "2023-01-31", 3162.60, 4.7424, 15000],
+        [1, "2023-02-28", 3175.00, 4.7263, 15000],
+        [1, "2023-03-30", 3182.00, 4.7166, 15000]
+      ]
+    },
+    {
+      "isin": "INF204KB17I9",
+      "schemeName": "HDFC Gold ETF",
+      "folioId": "2003910001",
+      "txns": [
+        [1, "2023-02-01", 50.00, 100.00, 5000],
+        [1, "2023-05-02", 50.50, 99.0099, 5000],
+        [1, "2024-01-10", 55.00, 90.9091, 5000]
+      ]
+    }
+  ],
+  "schemaDescription": "A list of mutual fund investments. Each 'txns' field is a list of data arrays with schema: [ orderType (1 for BUY and 2 for SELL), transactionDate, purchasePrice, purchaseUnits, transactionAmount ]."
+}

@@ -1,0 +1,61 @@
+{
+  "uanAccounts": [
+    {
+      "phoneNumber": {},
+      "rawDetails": {
+        "est_details": [
+          {
+            "est_name": "GLOBAL LOGISTICS SOLUTIONS",
+            "member_id": "MHPN*****************",
+            "office": "(RO)PUNE",
+            "doj_epf": "10-07-2017",
+            "doe_epf": "30-04-2020",
+            "doe_eps": "30-04-2020",
+            "pf_balance": {
+              "net_balance": "250000",
+              "employee_share": {
+                "credit": "115000",
+                "balance": "115000"
+              },
+              "employer_share": {
+                "credit": "115000",
+                "balance": "115000"
+              }
+            }
+          },
+          {
+            "est_name": "SECURE DATA MANAGEMENT INC.",
+            "member_id": "KABN*****************",
+            "office": "(RO)BENGALURU",
+            "doj_epf": "01-09-2020",
+            "doe_epf": "NOT AVAILABLE",
+            "doe_eps": "NOT AVAILABLE",
+            "pf_balance": {
+              "net_balance": "385000",
+              "employee_share": {
+                "credit": "175000",
+                "balance": "175000"
+              },
+              "employer_share": {
+                "credit": "175000",
+                "balance": "175000"
+              }
+            }
+          }
+        ],
+        "overall_pf_balance": {
+          "pension_balance": "185000",
+          "current_pf_balance": "635000",
+          "employee_share_total": {
+            "credit": "290000",
+            "balance": "290000"
+          },
+          "employer_share_total": {
+            "credit": "290000",
+            "balance": "290000"
+          }
+        }
+      }
+    }
+  ]
+}

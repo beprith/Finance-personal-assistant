@@ -1,0 +1,33 @@
+{
+  "schemaDescription": "A list of bank transactions. Each 'txns' field is a list of data arrays with schema: [transactionAmount, transactionNarration, transactionDate, transactionType (1 for CREDIT, 2 for DEBIT, 3 for OPENING, 4 for INTEREST, 5 for TDS, 6 for INSTALLMENT, 7 for CLOSING and 8 for OTHERS), transactionMode, currentBalance].\n We currently have have only last two month transaction, older transaction are coming soon...",
+  "bankTransactions": [
+    {
+      "bank": "State Bank of India",
+      "txns": [
+        ["145000", "SALARY CREDIT - MINISTRY OF FINANCE - JULY 2024", "2024-07-01", 1, "NEFT", "385000"],
+        ["10000", "NEFT DR-ICIC0003344-TRANSFER FOR RD", "2024-07-02", 2, "FT", "375000"],
+        ["25000", "LUMPSUM INV-NIPPON INDIA CORP BOND-FOLIO 2002011001", "2024-07-05", 2, "FT", "350000"],
+        ["28500", "SBI CREDIT CARD-BILL PAYMENT-XXXXXXXX5511", "2024-07-10", 2, "CARD_PAYMENT", "321500"],
+        ["8750", "QUARTERLY INTEREST CREDIT ON FD A/C XXXXXX1122", "2024-07-15", 4, "INTEREST", "330250"],
+        ["4500", "UPI-RELIANCE FRESH-RELIANCE@SBI-SBIN0000001-GROCERIES", "2024-07-20", 2, "OTHERS", "325750"],
+        ["15000", "IMPS-ZERODHA-FUNDS FOR GOLD ETF PURCHASE", "2024-07-22", 2, "IMPS", "310750"],
+        ["145000", "SALARY CREDIT - MINISTRY OF FINANCE - JUNE 2024", "2024-06-01", 1, "NEFT", "262000"],
+        ["10000", "NEFT DR-ICIC0003344-TRANSFER FOR RD", "2024-06-02", 2, "FT", "252000"],
+        ["30000", "LUMPSUM INV-AXIS TREASURY ADV FUND-FOLIO 2002011001", "2024-06-07", 2, "FT", "222000"],
+        ["24800", "SBI CREDIT CARD-BILL PAYMENT-XXXXXXXX5511", "2024-06-10", 2, "CARD_PAYMENT", "197200"],
+        ["2200", "BILLPAY-TATA POWER-ELECTRICITY BILL", "2024-06-18", 2, "BILLPAY", "195000"],
+        ["1800", "UPI-INDIAN OIL-IOCLPETROL@SBI-SBIN0000001-FUEL", "2024-06-25", 2, "OTHERS", "193200"],
+        ["650", "CREDIT INTEREST CAPITALISED", "2024-06-30", 4, "INTEREST", "193850"]
+      ]
+    },
+    {
+      "bank": "ICICI Bank",
+      "txns": [
+        ["10000", "NEFT CR-SBIN0000556-FUNDS FROM SBI", "2024-07-02", 1, "FT", "12500"],
+        ["10000", "AUTO DEBIT - RD INSTALLMENT A/C XXXXXX3344", "2024-07-03", 6, "ACH", "2500"],
+        ["10000", "NEFT CR-SBIN0000556-FUNDS FROM SBI", "2024-06-02", 1, "FT", "11800"],
+        ["10000", "AUTO DEBIT - RD INSTALLMENT A/C XXXXXX3344", "2024-06-03", 6, "ACH", "1800"]
+      ]
+    }
+  ]
+}
