@@ -95,3 +95,7 @@ mcp dev main_mcp.py
 ## Requirements
 * Python 3.8+
 * `fastmcp` (included in `requirements.txt`)
+
+## MCP Inspector Command and Argument
+<img width="395" height="882" alt="image" src="https://github.com/user-attachments/assets/4f64c2eb-16f5-4bbc-aa25-0ef4aeb5c3f0" />
+
