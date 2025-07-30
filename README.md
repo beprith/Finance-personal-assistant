@@ -1,111 +1,152 @@
-# fi-mcp-dev
+# Local Financial MCP Mock Server
 
-A minimal, hackathon-ready version of the Fi MCP server. This project provides a lightweight mock server for use in hackathons, demos, and development, simulating the core features of the production Fi MCP server with dummy data and simplified authentication.
+This project provides a lightweight, local implementation of the **Model Context Protocol (MCP)** server for simulating financial‑data interactions. It is intended for developers who need a secure, simplified environment for testing applications without connecting to live financial systems or user data.
 
-## Purpose
+---
 
-- **fi-mcp-dev** is designed for hackathon participants and developers who want to experiment with the Fi MCP API without accessing real user data or production systems.
-- It serves dummy financial data and uses a dummy authentication flow, making it safe and easy to use in non-production environments.
+## ✨ Features
 
-## Features
+| Capability               | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| Dummy **Authentication** | Login succeeds if the phone number exists as a directory in `test_data_dir/`. |
+| Pre‑canned **Financial Data** | Static JSON files for net‑worth, credit report, bank & MF transactions, EPF. |
+| Plug‑and‑Play **Tools**  | Each JSON dataset is exposed as an MCP *tool* (see list below).               |
+| **Quick setup**          | Zero external integrations—just clone, install, run.                         |
 
-- **Simulates Fi MCP API**: Implements endpoints for net worth, credit report, EPF details, mutual fund transactions, and bank transactions.
-- **Dummy Data**: All responses are served from static JSON files in `test_data_dir/`, representing various user scenarios.
-- **Dummy Authentication**: Simple login flow using allowed phone numbers (directory names in `test_data_dir/`). No real OTP or user verification.
-- **Hackathon-Ready**: No real integrations, no sensitive data, and easy to reset or extend.
+---
 
-## Directory Structure
+## 📂 Directory Layout
 
-- `main.go` — Entrypoint, sets up the server and endpoints.
-- `middlewares/auth.go` — Implements dummy authentication and session management.
-- `test_data_dir/` — Contains directories named after allowed phone numbers. Each directory holds JSON files for different API responses (e.g., `fetch_net_worth.json`).
-- `static/` — HTML files for the login and login-successful pages.
+```text
+.
+├── main_mcp.py        # MCP server implementation (Python)
+└── test_data_dir      # Dummy data grouped by phone number
+    ├── 1111111111
+    │   ├── fetch_net_worth.json
+    │   └── ...
+    └── 2222222222
+        ├── fetch_credit_report.json
+        └── ...
+```
 
-## Dummy Data Scenarios
+---
 
-The dummy data covers a variety of user states. Example scenarios:
+## 🔧 Installation & Run
 
-- **All assets connected**: Banks, EPF, Indian stocks, US stocks, credit report, large or small mutual fund portfolios.
-- **All assets except bank account**: No bank account, but other assets present.
-- **Multiple banks and UANs**: Multiple bank accounts and EPF UANs, partial transaction coverage.
-- **No assets connected**: Only a savings account balance is present.
-- **No credit report**: All assets except credit report.
+### Prerequisites
+* **Python 3.9+**
 
-## Test Data Scenarios
+### Install dependencies
+```bash
+pip install mcp mcp-inspector
+```
 
-| Phone Number | Description                                                                                                                                                                                                                                        |
-|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1111111111  | No assets connected. Only saving account balance present                                                                                                                                                                                                                                            |
-| 2222222222  | All assets connected (Banks account, EPF, Indian stocks, US stocks, Credit report). Large mutual fund portfolio with 9 funds                                                                                                                                                                        |
-| 3333333333  | All assets connected (Banks account, EPF, Indian stocks, US stocks, Credit report). Small mutual fund portfolio with only 1 fund                                                                                                                                                                    |
-| 4444444444  | All assets connected (Banks account, EPF, Indian stocks, US stocks). Small mutual fund portfolio with only 1 fund. With 2 UAN account connected . With 3 different bank with multiple account in them . Only have transactions for 2 bank accounts                                                  |
-| 5555555555  | All assets connected except credit score (Banks account, EPF, Indian stocks, US stocks). Small mutual fund portfolio with only 1 fund. With 3 different bank with multiple account in them. Only have transactions for 2 bank accounts                                                              |
-| 6666666666  | All assets connected except bank account (EPF, Indian stocks, US stocks). Large mutual fund portfolio with 9 funds. No bank account connected                                                                                                                                                       |
-| 7777777777  | Debt-Heavy Low Performer. A user with mostly underperforming mutual funds, high liabilities (credit card & personal loans). Poor MF returns (XIRR < 5%). No diversification (all equity, few funds). Credit score < 650. High credit card usage, multiple loans. Negligible net worth or negative.  |
-| 8888888888  | SIP Samurai. Consistently invests every month in multiple mutual funds via SIP. 3–5 active SIPs in MFs. Moderate returns (XIRR 8–12%).                                                                                                                                                              |
-| 9999999999  | Fixed Income Fanatic. Strong preference for low-risk investments like debt mutual funds and fixed deposits. 80% of investments in debt MFs. Occasional gold ETF (Optional). Consistent but slow net worth growth (XIRR ~ 8-10%).                                                                    |
-| 1010101010  | Precious Metal Believer. High allocation to gold and fixed deposits, minimal equity exposure. Gold MFs/ETFs ~50% of investment. Conservative SIPs in gold funds. FDs and recurring deposits. Minimal equity exposure.                                                                               |
-| 1212121212  | Dormant EPF Earner. Has EPF account but employer stopped contributing; balance stagnant. EPF balance > ₹2 lakh. Interest not being credited. No private investment.                                                                                                                                 |
-| 1414141414  | Salary Sinkhole. User’s salary is mostly consumed by EMIs and credit card bills. Salary credit every month. 70% goes to EMIs and credit card dues. Low or zero investment. Credit score ~600–650.                                                                                                   |
-| 1313131313  | Balanced Growth Tracker. Well-diversified portfolio with EPF, MFs, stocks, and some US exposure. High EPF contribution. SIPs in equity & hybrid MFs. International MFs/ETFs 10–20%. Healthy net worth growth. Good credit score (750+).                                                             |
-| 2020202020  | Starter Saver. Recently started investing, low ticket sizes, few transactions. Just 1–2 MFs, started < 6 months ago. SIP ₹500–₹1000. Minimal bank balance, no debt.                                                                                                                                 |
-| 1515151515  | Ghost Portfolio. Has old investments but hasn’t made any changes in years. No MF purchase/redemption in 3 years. EPF stagnant or partially withdrawn. No SIPs or salary inflow. Flat or declining net worth.                                                                                        |
-| 1616161616  | Early Retirement Dreamer. Optimizing investments to retire by 40. High savings rate, frugal lifestyle. Aggressive equity exposure (80–90%). Lean monthly expenses. Heavy SIPs + NPS + EPF contributions. No loans, no luxury spending. Targets 30x yearly expenses net worth.                       |
-| 1717171717  | The Swinger. Regularly buys/sells MFs and stocks, seeks short-term gains. Many MF redemptions within 6 months. Equity funds only, high churn. No SIPs. Short holding periods. High txn volume in bank account.                                                                                      |
-| 1818181818  | Passive Contributor. No personal income, but has EPF from a past job and joint bank accounts. Old EPF, no current contributions. No active SIPs. Transactions reflect shared household spending. No credit score record (no loans/credit card).                                                     |
-| 1919191919  | Section 80C Strategist. Uses ELSS, EPF, NPS primarily to optimize taxes. ELSS SIPs in Q4 (Jan–Mar). EPF active. NPS data if available. No non-tax-saving investments. Low-risk debt funds as balance.                                                                                               |
-| 2121212121  | Dual Income Dynamo. Has freelance + salary income; cash flow is uneven but investing steadily. Salary + multiple credits from UPI apps. MF investments irregular but increasing. High liquidity in bank accounts. Credit score above 700. Occasional business loans or overdraft.                   |
-| 2222222222  | Sudden Wealth Receiver. Recently inherited wealth, learning how to manage it. Lump sum investments across categories. High idle cash in bank. Recent MF purchases, no SIPs yet. No credit history or debt. EPF missing or dormant.                                                                  |
-| 2323232323  | Overseas Optimizer. NRI who continues to manage Indian EPF, MFs, and bank accounts. Large EPF corpus. No salary inflows, occasional foreign remittances. MF transactions in bulk. Indian address missing or outdated. No credit card usage in India.                                                |
-| 2424242424  | Mattress Money Mindset. Doesn’t trust the market; everything is in bank savings and FDs. 95% net worth in FDs/savings. No mutual funds or stocks. EPF maybe present. No debt or credit score. Low but consistent net worth growth.                                                                  |
-| 2525252525  | Live-for-Today. High income but spends it all. Investments are negligible or erratic. Salary > ₹2L/month. High food, shopping, travel spends. No SIPs, maybe one-time MF buy. Credit card dues often roll over. Credit score < 700, low or zero net worth.                                          |
+### Start the server
+```bash
+python main_mcp.py
+```
+The server runs using **stdio** transport by default.
 
-## Example: Dummy Data File
+---
 
-A sample `fetch_net_worth.json` (truncated for brevity):
+## 🔑 Dummy Authentication
 
-```json
+* Login is successful if the supplied phone number matches a folder in `test_data_dir/`.
+* Example valid numbers: `1111111111`, `2222222222`, `3333333333`, … (see folders).
+
+---
+
+## 🛠️ Available MCP Tools
+
+| Tool Name                  | Purpose                                        |
+|----------------------------|------------------------------------------------|
+| `authenticate_user`        | Dummy login check                              |
+| `fetch_net_worth`          | Net‑worth summary + assets/liabilities         |
+| `fetch_credit_report`      | Credit score & account details                 |
+| `fetch_bank_transactions`  | Full bank‑statement style transaction list     |
+| `fetch_epf_details`        | EPF balance & employment history               |
+| `fetch_mf_transactions`    | Mutual‑fund buy/sell history                   |
+
+All tools accept **`phone_number`** as their sole argument.
+
+---
+
+## 🚀 FastMCP Dev Environment UI
+
+FastMCP ships with a lightweight developer UI that lets you explore any local MCP server, run tools, and inspect raw responses—all from the browser.
+
+### 1. Install the FastMCP CLI (one‑time)
+```bash
+pip install fastmcp
+```
+
+### 2. Launch the Dev UI
+From your project root:
+```bash
+fastmcp dev main_mcp.py
+```
+⚙️ *This spins up `main_mcp.py` **and** the web UI in one command.*
+
+*Already registered the server in `mcp_servers.json`?*  Simply run:
+```bash
+fastmcp dev
+```
+FastMCP will auto‑detect `local-financial-mcp` and start it.
+
+The UI opens at **http://localhost:4400** where you can:
+
+![FastMCP Dev UI](a4c7f9b7-6534-419a-a6f9-902756562c00.png)
+- Authenticate with any test phone number (e.g., `2222222222`).
+- Invoke tools like `fetch_net_worth`, `fetch_credit_report`, etc.
+- Inspect request/response JSON in real time for quick debugging.
+
+### 3. Use alongside other FastMCP‑aware apps
+The Dev UI acts purely as a client—you can keep it open while calling the same server from Langflow or the FastMCP CLI.
+
+---
+
+## ⚙️ FastMCP Server‑side Entry
+
+If you want another FastMCP‑aware application (or CLI) to **auto‑launch** this mock server, add the following stanza to its `mcp_servers.json` (or similar) file:
+
+```jsonc
 {
-  "netWorthResponse": {
-    "assetValues": [
-      {"netWorthAttribute": "ASSET_TYPE_MUTUAL_FUND", "value": {"currencyCode": "INR", "units": "84642"}},
-      {"netWorthAttribute": "ASSET_TYPE_EPF", "value": {"currencyCode": "INR", "units": "211111"}}
-    ],
-    "liabilityValues": [
-      {"netWorthAttribute": "LIABILITY_TYPE_VEHICLE_LOAN", "value": {"currencyCode": "INR", "units": "5000"}}
-    ],
-    "totalNetWorthValue": {"currencyCode": "INR", "units": "658305"}
+  "servers": {
+    "local-financial-mcp": {
+      "transport": "stdio",          // or "sse" if you expose an HTTP endpoint
+      "command": "python",
+      "args": ["main_mcp.py"],
+      "cwd": "<path-to-project-root>"  // folder containing main_mcp.py & test_data_dir/
+    }
   }
 }
 ```
 
-## Authentication Flow
+* **transport** – Use `stdio` for the default pipe transport (fastest). Switch to `sse` if you wrap the server with an HTTP layer and expose `/mcp/stream`.
+* **cwd** – Ensures relative paths (like `test_data_dir/`) resolve correctly.
 
-- When a tool/API is called, the server checks for a valid session.
-- If not authenticated, the user is prompted to log in via a web page (`/mockWebPage?sessionId=...`).
-- Enter any allowed phone number (see directories in `test_data_dir/`). OTP is not validated.
-- On successful login, the session is stored in memory for the duration of the server run.
+Once registered, you can invoke tools directly via FastMCP CLI:
 
-## Running the Server
-
-### Prerequisites
-- Go 1.23 or later ([installation instructions](https://go.dev/doc/install))
-
-### Install dependencies
-```sh
-go mod tidy
+```bash
+mcp call local-financial-mcp authenticate_user --phone_number 2222222222
+mcp call local-financial-mcp fetch_net_worth --phone_number 2222222222
 ```
 
-### Start the server
-```sh
-FI_MCP_PORT=8080 go run .
+---
+
+## 🧑‍💻 Example Workflow
+
+```python
+mcp.call("authenticate_user", phone_number="2222222222")
+print(mcp.call("fetch_net_worth", phone_number="2222222222"))
 ```
 
-The server will start on [http://localhost:8080](http://localhost:8080).
+---
 
-## Usage
-- Follow instructions in this [guide](https://fi.money/features/getting-started-with-fi-mcp) to setup client
-- Replace url with locally running server, for example: `http://localhost:8080/mcp/stream`
-- When prompted for login, use one of the above phone numbers
-- Otp/Passcode can be anything on the webpage
+## 🤝 Contributing
+Pull requests are welcome—whether it’s extra dummy scenarios, bug fixes, or new tools.
 
+---
+
+## 🪪 License
+This project is provided **as‑is** for educational and testing purposes.
