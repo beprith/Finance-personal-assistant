@@ -2,6 +2,8 @@
 
 This project provides a lightweight, local implementation of the **Model Context Protocol (MCP)** server for simulating financial‑data interactions. It is intended for developers who need a secure, simplified environment for testing applications without connecting to live financial systems or user data.
 
+**See README_UI for UI guide**
+
 ---
 
 ## ✨ Features
